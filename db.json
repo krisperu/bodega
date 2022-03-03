@@ -13,12 +13,6 @@
       "price": 7.99
     },
     {
-      "id": 3,
-      "image": "./images/milk.png",
-      "name": "Milk",
-      "price": 3.99
-    },
-    {
       "id": 5,
       "image": "./images/eggs.jpg",
       "name": "Eggs",

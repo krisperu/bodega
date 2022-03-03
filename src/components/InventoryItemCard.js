@@ -1,6 +1,6 @@
 import React from 'react'
 
-function InventoryItemCard({item, onCardClick}) {
+function InventoryItemCard({item, onCardClick, onDelete}) {
 
     const { image, name, price } = item
 
@@ -9,7 +9,7 @@ function InventoryItemCard({item, onCardClick}) {
             <img src={image}></img>
             <h3>{name}</h3>
             <h4>${price}</h4>
-            <button onClick={() => console.log("Deleting the item...")}>Delete</button>
+            <button onClick={(e) => onDelete(e, item)}>Delete</button>
         </div>
     );
 }

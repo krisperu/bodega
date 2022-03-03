@@ -20,13 +20,24 @@ function InventoryManager() {
     }
     function removeFromReorders(item) {
         const newReorders = reorders.filter(reorderItem => reorderItem !== item)
-        setReorders([newReorders])
+        setReorders(newReorders)
+    }
+    function handleDelete(e, item) {
+        e.stopPropagation()
+        // console.log("item:", item)
+        fetch(baseUrl + `/inventory/${item.id}`, {method: 'DELETE' })
+
+        const newReorders = reorders.filter(reorderItem => reorderItem !== item)
+        setReorders(newReorders)
+        
+        const newInventory = inventory.filter(inventoryItem => inventoryItem !== item)
+        setInventory(newInventory)
     }
 
     return(
         <div className="container">
-            <CurrentInventoryList inventory={inventory} onCardClick={addToReorders}/>
-            <ReorderInventoryList reorders={reorders} onRemoveClick={removeFromReorders}/>
+            <CurrentInventoryList inventory={inventory} onCardClick={addToReorders} onDelete={handleDelete}/>
+            <ReorderInventoryList reorders={reorders} onRemoveClick={removeFromReorders} onDelete={handleDelete}/>
         </div>
     );
 }
